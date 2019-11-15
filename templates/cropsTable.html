@@ -1,0 +1,61 @@
+{%extends "admin.html"%}
+{% block content %} 
+<div>
+    <h4>These are the crops entered</h4>
+    <table border ="1" id="myTable" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Crop id</th>
+                <th>Crop Name</th>
+                <th>Preparations</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for crop in crops %}
+                <tr class='clickable-row' data-href="/fetch_pests_diseases/{{ crop['id'] }}">
+                    <td>{{ crop['id'] }}</td>
+                    <td>{{ crop['crop_name'] }}</td>
+                    <td>{{ crop['preparations'] }}</td>
+                    <td>
+                        <div class="icon-div">
+                            <a class="icon"href="/edit_crop/{{crop['id']}}">
+                                <i  href="/edit_crop/{{crop['id']}}" class="fa fa-edit"></i>
+                            </a>
+                            <a class="icon" href="/fetch_crops/{{crop['id']}}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </a>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    $(function(){
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+        });
+    });
+    // for datatables
+    $(document).ready( function () {
+        $('#myTable').DataTable({
+            "processing": true,
+            "serverSide": true,
+        });
+    } );
+</script>
+{% endblock %}
+
+{% block css %}
+<style>
+    tr.clickable-row{
+        cursor: pointer;
+    }
+</style>
+{% endblock %}

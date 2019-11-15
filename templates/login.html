@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/css/loginStyles.css">
+    <title>Login</title>
+
+    
+</head>
+<body>
+    
+    <nav style="text-align: right">
+        <a style="margin: 5px; text-decoration: none" href="login">Login</a>
+        <a style="margin: 5px; text-decoration: none" href="register">Register</a>
+    </nav>
+    
+    <form class="form" method="POST" action="login_user">
+        <h1>Login</h1>
+        <!-- thinking of having two options of login ie as user or admin -->
+        <label>Enter email</label><br>
+        <input type="text" name="email" required><br>
+        <label>Enter Password</label><br>
+        <input type="password" name="password" required><br>
+        <input type="submit" name="submit"><br>
+        <a href="#">Forgot Password</a>
+    </form>
+    
+</body>
+</html>

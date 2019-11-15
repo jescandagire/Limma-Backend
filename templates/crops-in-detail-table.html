@@ -1,0 +1,29 @@
+{%extends "admin.html"%}
+{% block content %} 
+<table border ="1">
+    <thead>
+        <tr>
+            <th>Crop id</th>
+            <th>Crop Name</th>
+            <th>Preparations</th>
+            <th>Image</th>
+            <th>Disease</th>
+            <th>Signs and symptoms</th>
+            <th>Prevention and Cure</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for content in contents %}
+            <tr>
+                <td>{{content[0]}}</td>
+                <td>{{content[1]}}</td>
+                <td>{{content[2]}}</td>
+                <td>{{content[3]}}</td>
+                <td>{{content[4]}}</td>
+                <td>{{content[5]}}</td>
+                <td>{{content[6]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

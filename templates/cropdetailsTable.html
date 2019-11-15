@@ -1,0 +1,28 @@
+{%extends "admin.html"%}
+{% block content %}
+
+<div>
+        <h4>These are the crop details</h4>
+        <table border ="1" id="myTable" class="table table-striped" style="width:100%" >
+            <thead>
+                <tr>
+                    <th>Crop id</th>
+                    <th>Diseases</th>
+                    <th>Signs</th>
+                    <th>Cures</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for det in pests_diseases %}
+                    <tr>
+                        <td>{{ det['crop_id'] }}</td>
+                        <td>{{ det['diseases'] }}</td>
+                        <td>{{ det['signs'] }}</td>
+                        <td>{{ det['cures'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+
+{% endblock %}

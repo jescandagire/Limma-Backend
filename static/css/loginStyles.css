@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url(/static/images/vegetable-cultivation.jpg);
+    background-size: cover;
+    font-family: Tahoma, sans-serif;
+}
+
+.form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 400px;
+    height: 500px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,0.5);
+    padding: 40px;
+}
+
+h1{
+    margin: 0;
+    padding: 0 0 20px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+}
+
+.form label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.form input{
+    margin-bottom: 20px;
+    width: 100%;
+    }
+
+.form input[type=text], .form input[type=password], .form input[type=email]{
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    display: 16px;
+    background-color: transparent;
+    outline: none;
+    height: 40px;
+    padding-left: 10px;
+}
+
+::placeholder{
+    color: #ffffff;
+}
+
+.form input[type=submit]{
+    border: none;
+    height: 40px;
+    outline: none;
+    color: #ffffff;
+    font-size: 16px;
+    background-color: tomato;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.form input[type=submit] :hover{
+    background-color: cyan;
+    color: #ffffff;
+}
+
+.form a{
+    margin-top: 100px;
+    color:white;
+    font-size: 14px;
+}

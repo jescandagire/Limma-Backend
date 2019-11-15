@@ -1,0 +1,89 @@
+{%extends "admin.html"%}
+{% block content %} 
+
+<!-- #########the images need to be saved in the database as well for the user section######## -->
+<div class="my-form">
+    <form method="POST" action="/update_crop/30" enctype="multipart/form-data">
+        <h3 style="text-align: center">Edit {{crops["crop_name"]}} Data</h3>
+        <div class="form-group">
+            <label for="cropName">Crop Name</label>
+            <input type="text" class="form-control" id="cropName" value = '{{crops["crop_name"]}}' name="crop_name">
+        </div>
+        <div class='form-group'>
+            <label for="preparations-and-planting">Preparations and Planting:</label>
+            <textarea id="preparations-and-planting" class="form-control" name="preparations">{{crops["preparations"]}}</textarea>
+        </div>
+        
+        {% if crops['diseases'] %}
+            {% for disease in crops['diseases'] %}
+            <div class="form-row input-group control-group after-add-more">
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="diseases" placeholder="Disease" value = '{{disease["diseases"]}}' name="diseases">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="signs" placeholder="Signs and symptoms" value = '{{disease["signs"]}}' name="signs">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="cure" placeholder="Prevention and Cure" value = '{{disease["cure"]}}' name="cure">
+                </div>
+                <div class="form-group col-md-1"> 
+                    <button id='add_item' class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="form-row input-group control-group after-add-more">
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="diseases" placeholder="Disease" name="diseases">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="signs" placeholder="Signs and symptoms" name="signs">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="cure" placeholder="Prevention and Cure" name="cure">
+                </div>
+                <div class="form-group col-md-1"> 
+                    <button id='add_item' class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button>
+                </div>
+            </div>
+        {% endif %}
+        <div class="form-group">
+            <input type="file" id="myFile" name="file">
+        </div>
+        <div class="form-row" style=' justify-content: center'>
+            <div class="form-group col-md-4 text-center">
+                <input type="reset" class="btn btn-primary btn-sm" id = 'cancel' value="Cancel">
+                <input type="submit" class="btn btn-success btn-sm" value="Update">
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+$(function(){
+    $('#add_item').click(function(){
+        $('.after-add-more').append(`
+            <div class='form-row added_item'>
+                <div class="form-group col-md-3">
+                    <input type="text" class="form-control" id="diseases" placeholder="Disease" name="diseases">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="signs" placeholder="Signs and symptoms" name="signs">
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="cure" placeholder="Prevention and Cure" name="cure">
+                </div>
+                <div class="form-group col-md-1"> 
+                    <button id='remove_item' class="btn btn-danger" type="button"><i class="glyphicon glyphicon-plus"></i>X</button>
+                </div>
+            </div>
+        `)
+    });
+
+    $("body").on("click", "#remove_item", function(){ 
+          $(this).parents(".added_item").remove();
+      });
+});
+</script>
+{% endblock %}
